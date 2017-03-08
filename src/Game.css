@@ -1,0 +1,18 @@
+.Game {
+   width: 100%;
+   height: 100%;
+   background-color: green;
+}
+
+.Players {
+   width: 150px;
+   float: left;
+   background-color: darkgreen;
+   height: 100%;
+}
+
+.Cards {
+    width: 800px; 
+    float: left;   
+    background-color: green;
+}

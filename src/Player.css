@@ -1,0 +1,12 @@
+.Player {
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    margin: 1rem;    
+    text-align: center;
+    color: black;  
+}
+
+.Player--current {
+    border: 1px solid red;
+}

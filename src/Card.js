@@ -20,7 +20,7 @@ export default class Card extends Component {
       {'Card--flipped': this.props.flipped},
       {'Card--matched': this.props.matched}
     );
-    var cardValue = this.props.flipped ? this.props.value : '';
+    var cardValue = (this.props.flipped && ! this.props.matched)? this.props.value : '';
     return (
       <div className={classes} onClick={this.handleClick}>
         {cardValue}
