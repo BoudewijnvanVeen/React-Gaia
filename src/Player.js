@@ -10,12 +10,12 @@ export default class Player extends Component {
   render() {   
     var classes = classnames(
       'Player',
-      {'Player--current': this.props.current}      
+      {'Player--current': this.props.player.current}      
     );
     return (
       <div className={classes}>
-        <div>{this.props.name}</div>
-        <div>{this.props.matched}</div>
+        <div>{this.props.player.name}</div>
+        <div>{this.props.player.matched}</div>
       </div>     
     );
   }

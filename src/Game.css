@@ -2,6 +2,7 @@
    width: 100%;
    height: 100%;
    background-color: green;
+   bottom: 0;
 }
 
 .Players {
@@ -15,4 +16,5 @@
     width: 800px; 
     float: left;   
     background-color: green;
+    height: 100%;
 }
