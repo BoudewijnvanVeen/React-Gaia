@@ -10,7 +10,7 @@ export default class Card extends Component {
 
   handleClick(e) {
     if (!this.props.card.flipped) {
-      this.props.checkMatch(this.props.card.value, this.props.id);
+      this.props.checkMatch(this.props.card);
     }
   }
 

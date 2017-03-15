@@ -20,31 +20,34 @@ export default class Game extends Component {
       cards: nextProps.cards, 
       players: nextProps.players 
     }); 
-  }
+  }  
 
-  checkMatch(value, id) {
+  byid = id => card => card.id === id;
+  isFlipped = card => card.flipped === true;
+  isCurrent = player => player.current === true;
+ 
+  checkMatch(card) {
+
     if (this.state.locked) return;
-
     this.setState({ locked: true });    
 
     var cards = this.state.cards;
-    cards[id].flipped = true; 
+    cards.find(byid(card.id)).flipped = true; 
+    var flippedCards = cards.filter(isFlipped);  
 
     var players = this.state.players;
-    var currentPlayer = players.find(p => p.current === true);
-    var flippedCards = cards.filter(c => c.flipped === true);  
+    var currentPlayer = players.find(isCurrent);    
 
     if (flippedCards.length === 2) {      
       setTimeout(() => {
         if (flippedCards[0].value === flippedCards[1].value) {        
-          cards[flippedCards[0].id].matched = true;
-          cards[flippedCards[1].id].matched = true;
-          players[currentPlayer.id].matched += 1;
+          cards.filter(isFlipped).map(c => c.matched == true);
+          players.find(isCurrent).matched += 1;
           this.setState({cards, players});
         } else {        
-          cards.filter(c => c.flipped === true).map(c => c.flipped = false);
-          players[currentPlayer.id].current = false;
-          players[currentPlayer.id+1].current = true;
+          cards.filter(isFlipped).map(c => c.flipped == false);
+          players.find(isCurrent).current = false;
+          //nextplayer.current = true;
           this.setState({cards, players});
         }
       }, 1000);

@@ -9,18 +9,18 @@ export default class Settings extends Component {
   updateState () {
       var data = {
         'cards': [
-          {value: 2, matched: 0, flipped: false},
-          {value: 4, matched: 0, flipped: false},
-          {value: 1, matched: 0, flipped: false},
-          {value: 1, matched: 0, flipped: false},
-          {value: 3, matched: 0, flipped: false},
-          {value: 4, matched: 0, flipped: false},
-          {value: 2, matched: 0, flipped: false},
-          {value: 3, matched: 0, flipped: false}],
+          {id: 'c1', value: 2, matched: 0, flipped: false},
+          {id: 'c2', value: 4, matched: 0, flipped: false},
+          {id: 'c3', value: 1, matched: 0, flipped: false},
+          {id: 'c4', value: 1, matched: 0, flipped: false},
+          {id: 'c5', value: 3, matched: 0, flipped: false},
+          {id: 'c6', value: 4, matched: 0, flipped: false},
+          {id: 'c7', value: 2, matched: 0, flipped: false},
+          {id: 'c8', value: 3, matched: 0, flipped: false}],
         'players': [
-          {name: 'Gaia', matched: 0, current: false},
-          {name: 'Boudewijn', matched: 0, current: false},
-          {name: 'Mirjam', matched: 0, current: false}],
+          {id: 'p1', name: 'Gaia', matched: 0, current: false},
+          {id: 'p2', name: 'Boudewijn', matched: 0, current: false},
+          {id: 'p3', name: 'Mirjam', matched: 0, current: false}],
         'playing': true
       }
 
