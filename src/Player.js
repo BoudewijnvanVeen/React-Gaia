@@ -10,7 +10,7 @@ export default class Player extends Component {
   render() {   
     var classes = classnames(
       'Player',
-      {'Player--current': this.props.player.current}      
+      {'Player--current': this.props.currentPlayer}      
     );
     return (
       <div className={classes}>
