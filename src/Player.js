@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import classnames from 'classnames';
 import './Player.css';
 
 export default class Player extends Component {
@@ -7,13 +6,9 @@ export default class Player extends Component {
     super(props);    
   }  
 
-  render() {   
-    var classes = classnames(
-      'Player',
-      {'Player--current': this.props.key === 0}      
-    );
+  render() {       
     return (
-      <div className={classes}>
+      <div className='Player'>
         <div>{this.props.player.name}</div>
         <div>{this.props.player.matched}</div>
       </div>     
