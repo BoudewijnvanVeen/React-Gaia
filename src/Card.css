@@ -16,9 +16,7 @@
     background-color: black;
     font-family: cursive;
     font-size: 40px; 
-    padding-top:10px;
-
-    transform: rotateY( 180deg );
+    padding-top:10px;    
 }
     
 .Card-matched {
