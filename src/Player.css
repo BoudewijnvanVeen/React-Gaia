@@ -1,12 +1,16 @@
 .Player {
-    width: 4rem;
-    height: 4rem;
+    width: 100px;
+    height: 100%;
     padding: 1rem;
     margin: 1rem;    
     text-align: center;
     color: black;  
 }
 
-.Player--current {
-    border: 1px solid red;
+.Players>div {    
+    width: 100%;
+}
+
+.Players>div:first-child {
+    border: 1px solid red;   
 }

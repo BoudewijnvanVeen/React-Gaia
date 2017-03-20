@@ -17,11 +17,11 @@ export default class Card extends Component {
   render() {
     var classes = classnames(
       'Card',
-      {'Card--flipped': this.props.card.flipped},
-      {'Card--matched': this.props.card.matched}
+      {'Card-flipped': this.props.card.flipped},
+      {'Card-matched': this.props.card.matched}
     );
     var cardValue = (this.props.card.flipped && ! this.props.card.matched)? this.props.card.value : '';
-    return (
+    return (      
       <div className={classes} onClick={this.handleClick}>
         {cardValue}
       </div>

@@ -1,3 +1,4 @@
+
  .Card {
     float: left;
     width: 100px;
@@ -10,14 +11,18 @@
     background-color: dodgerblue;  
 }
 
-.Card--flipped {   
+.Card-flipped {   
     color: white; 
     background-color: black;
+    font-family: cursive;
+    font-size: 40px; 
+    padding-top:10px;
+
+    transform: rotateY( 180deg );
 }
     
-.Card--matched {
+.Card-matched {
     border: 1px dashed white;
     background-color: green;
     width: 106px;
 }
- 

@@ -28,7 +28,7 @@ export default class Game extends Component {
     this.setState({ locked: true });   
     
     var byid = id => card => card.id === id;
-    var isFlipped = card => card.flipped === true;         
+    var isFlipped = card => card.flipped && !card.matched;         
 
     var cards = Object.assign([], this.state.cards);
     var players = Object.assign([], this.state.players);  
@@ -39,7 +39,7 @@ export default class Game extends Component {
     if (flippedCards.length === 2) {      
       setTimeout(() => {
         if (flippedCards[0].value === flippedCards[1].value) {        
-          cards.filter(isFlipped).forEach(c => c.matched = true, c.flipped = false);
+          cards.filter(isFlipped).forEach(c => c.matched = true);
           players[0].matched += 1;
           this.setState({cards, players});
         } else {        
@@ -59,11 +59,11 @@ export default class Game extends Component {
         <div className='Game'>  
           <div className='Players'>      
             { this.state.players.map((player, index) => { return ( 
-              <Player key={index} id={index} player={player} current={index===0} /> 
+              <Player key={index} player={player} /> 
             );})}
           </div><div className='Cards'>  
             { this.state.cards.map((card, index) => { return (
-              <Card key={index} id={index} card={card} checkMatch={this.checkMatch} />
+              <Card key={index} card={card} checkMatch={this.checkMatch} />
             );})}
           </div>
         </div>

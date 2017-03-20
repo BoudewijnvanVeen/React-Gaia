@@ -29,7 +29,7 @@ export default class Settings extends Component {
 
   updateState () {
       var data = {
-        'cards': this.getCards(2),
+        'cards': this.getCards(10),
         'players': [
           {id: 'p1', name: 'Gaia', matched: 0 },
           {id: 'p2', name: 'Boudewijn', matched: 0 },
