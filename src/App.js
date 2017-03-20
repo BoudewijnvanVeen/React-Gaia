@@ -15,7 +15,11 @@ class App extends Component {
       players: [],
       playing: false        
     }
-  }     
+  }    
+
+  source() {
+     return (["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
+  }; 
 
   updateState(data) {   
     this.setState(data) 
@@ -24,7 +28,7 @@ class App extends Component {
   render() {
       return (    
           <div>
-            <Settings visible={!this.state.playing} updateState={this.updateState} />  
+            <Settings visible={!this.state.playing} updateState={this.updateState} source={this.source()} />  
             <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" /> 
           </div>  
       );

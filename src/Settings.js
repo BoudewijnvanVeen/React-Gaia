@@ -6,17 +6,30 @@ export default class Settings extends Component {
     this.updateState = this.updateState.bind(this);    
   }
 
+  scramble(array) {
+      return array.reduceRight((pv,cv,i,arr) => {    
+        var random = Math.floor(Math.random() * arr.length);
+        pv.push(arr.splice(random, 1)[0]);    
+        return pv;
+      },[]);  
+  }
+
+  getCards(n) { 
+    var arr1 = this.scramble(this.props.source).slice(0, n);;
+    var arr3 = arr1.reduce((pv,cv,i,arr) => {
+      pv.push(
+          {id: i, value: cv, matched: false, flipped: false},
+          {id: arr.length + i, value: cv, matched: false, flipped: false}
+      );
+      return pv;
+    },[])
+
+    return this.scramble(arr3);
+  }
+
   updateState () {
       var data = {
-        'cards': [
-          {id: 'c1', value: 2, matched: false, flipped: false},
-          {id: 'c2', value: 4, matched: false, flipped: false},
-          {id: 'c3', value: 1, matched: false, flipped: false},
-          {id: 'c4', value: 1, matched: false, flipped: false},
-          {id: 'c5', value: 3, matched: false, flipped: false},
-          {id: 'c6', value: 4, matched: false, flipped: false},
-          {id: 'c7', value: 2, matched: false, flipped: false},
-          {id: 'c8', value: 3, matched: false, flipped: false}],
+        'cards': this.getCards(2),
         'players': [
           {id: 'p1', name: 'Gaia', matched: 0 },
           {id: 'p2', name: 'Boudewijn', matched: 0 },

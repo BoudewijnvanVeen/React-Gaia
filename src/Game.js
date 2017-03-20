@@ -30,8 +30,8 @@ export default class Game extends Component {
     var byid = id => card => card.id === id;
     var isFlipped = card => card.flipped === true;         
 
-    var cards = this.state.cards;
-    var players = this.state.players;  
+    var cards = Object.assign([], this.state.cards);
+    var players = Object.assign([], this.state.players);  
 
     cards.find(byid(card.id)).flipped = true; 
     var flippedCards = cards.filter(isFlipped);       
@@ -39,12 +39,12 @@ export default class Game extends Component {
     if (flippedCards.length === 2) {      
       setTimeout(() => {
         if (flippedCards[0].value === flippedCards[1].value) {        
-          cards.filter(isFlipped).forEach(c => c.matched = true);
+          cards.filter(isFlipped).forEach(c => c.matched = true, c.flipped = false);
           players[0].matched += 1;
           this.setState({cards, players});
         } else {        
           cards.filter(isFlipped).forEach(c => c.flipped = false);
-          players.push(arr.shift());                     
+          players.push(players.shift());                     
           this.setState({cards, players});
         }
       }, 1000);
