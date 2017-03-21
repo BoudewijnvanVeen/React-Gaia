@@ -27,7 +27,7 @@ class App extends Component {
 
   render() {
       return (    
-          <div>
+          <div id="App">
             <Settings visible={!this.state.playing} updateState={this.updateState} source={this.source()} />  
             <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" /> 
           </div>  
