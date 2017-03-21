@@ -13,7 +13,7 @@
 }
 
 .Cards {
-    width: 800px; 
+    width: 100%; 
     float: left;   
     background-color: green;
     height: 100%;

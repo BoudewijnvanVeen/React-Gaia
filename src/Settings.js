@@ -3,7 +3,15 @@ import React, {Component} from 'react';
 export default class Settings extends Component {
   constructor(props) {
     super(props);    
-    this.updateState = this.updateState.bind(this);    
+    this.updateState = this.updateState.bind(this);  
+    this.handleSubmit = this.handleSubmit.bind(this);   
+    this.handleChange = this.handleChange.bind(this);
+
+    this.state = {      
+      noOfCards: 10, 
+      players: [],
+      value: ''
+    }; 
   }
 
   scramble(array) {
@@ -27,24 +35,43 @@ export default class Settings extends Component {
     return this.scramble(arr3);
   }
 
+  getPlayers() {    
+    return this.state.players.map((v,i) => { return ( {id: i, name: v, matched: 0 })});      
+  }
+
   updateState () {
       var data = {
-        'cards': this.getCards(10),
-        'players': [
-          {id: 'p1', name: 'Gaia', matched: 0 },
-          {id: 'p2', name: 'Boudewijn', matched: 0 },
-          {id: 'p3', name: 'Mirjam', matched: 0 }],
+        'cards': this.getCards(this.state.noOfCards),
+        'players':this.getPlayers(),
         'playing': true
       }
 
       this.props.updateState(data)
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event){
+    var newArray = this.state.players.slice();    
+    newArray.push(this.state.value);   
+    this.setState({players:newArray});
+    event.preventDefault();
+  }
+
   render() {  
     if (this.props.visible) {
       return (      
         <div className='Settings'>  
-          <button onClick={this.updateState}>Click me</button>
+          { this.state.players.map((v,i) => { return (<div key={i}>{v}</div>); })}
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" value={this.state.value} onChange={this.handleChange} />             
+              <input type="submit" value="+" />
+            </form>
+            <button onClick={this.updateState}>Play!</button>
+          </div>
         </div>
       );      
     }
