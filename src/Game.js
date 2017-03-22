@@ -27,30 +27,28 @@ export default class Game extends Component {
     if (this.state.locked) return;
     this.setState({ locked: true });   
     
-    var byid = id => card => card.id === id;
-    var isFlipped = card => card.flipped && !card.matched;         
+    var byid = id => e => e.id === id;
+    var isFlipped = e => e.flipped && !e.matched;         
 
     var cards = Object.assign([], this.state.cards);
     var players = Object.assign([], this.state.players);  
 
-    cards.find(byid(card.id)).flipped = true; 
-    var flippedCards = cards.filter(isFlipped);       
+    if (cards.filter(isFlipped).length === 0)    
+        cards.find(byid(card.id)).flipped = true; 
 
-    if (flippedCards.length === 2) {      
-      setTimeout(() => {
-        if (flippedCards[0].value === flippedCards[1].value) {        
-          cards.filter(isFlipped).forEach(c => c.matched = true);
-          players[0].matched += 1;
-          this.setState({cards, players});
-        } else {        
-          cards.filter(isFlipped).forEach(c => c.flipped = false);
-          players.push(players.shift());                     
-          this.setState({cards, players});
-        }
-      }, 1000);
-    } 
+    if (cards.filter(isFlipped).length === 1) {
+      cards.find(byid(card.id)).flipped = true; 
+      if (cards.filter(isFlipped)[0].value === cards.filter(isFlipped)[1].value) {
+        cards.filter(isFlipped).forEach(c => c.matched = true);
+        players[0].matched += 1;       
+    }}
 
-    this.setState({ locked: false });    
+    if (cards.filter(isFlipped).length === 2) {
+      cards.filter(isFlipped).forEach(c => c.flipped = false);
+      players.push(players.shift()); 
+    }   
+
+    this.setState({ cards, players, locked: false });    
   }
 
   render() {  
