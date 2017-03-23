@@ -8,10 +8,8 @@ export default class Card extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    if (!this.props.card.flipped) {
-      this.props.checkMatch(this.props.card);
-    }
+  handleClick(e) {    
+    this.props.checkMatch(this.props.card);    
   }
 
   render() {

@@ -32,18 +32,19 @@ export default class Game extends Component {
 
     var cards = Object.assign([], this.state.cards);
     var players = Object.assign([], this.state.players);  
+    var flippedCards = cards.filter(isFlipped);
 
-    if (cards.filter(isFlipped).length === 0)    
+    if (flippedCards.length === 0)    
         cards.find(byid(card.id)).flipped = true; 
 
-    if (cards.filter(isFlipped).length === 1) {
+    if (flippedCards.length === 1) {
       cards.find(byid(card.id)).flipped = true; 
       if (cards.filter(isFlipped)[0].value === cards.filter(isFlipped)[1].value) {
         cards.filter(isFlipped).forEach(c => c.matched = true);
         players[0].matched += 1;       
     }}
 
-    if (cards.filter(isFlipped).length === 2) {
+    if (flippedCards.length === 2) {
       cards.filter(isFlipped).forEach(c => c.flipped = false);
       players.push(players.shift()); 
     }   
