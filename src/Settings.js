@@ -14,30 +14,7 @@ export default class Settings extends Component {
     }; 
   }
 
-  scramble(array) {
-      return array.reduceRight((pv,cv,i,arr) => {    
-        var random = Math.floor(Math.random() * arr.length);
-        pv.push(arr.splice(random, 1)[0]);    
-        return pv;
-      },[]);  
-  }
-
-  getCards(n) { 
-    var arr1 = this.scramble(this.props.source).slice(0, n);;
-    var arr3 = arr1.reduce((pv,cv,i,arr) => {
-      pv.push(
-          {id: i, value: cv, matched: false, flipped: false},
-          {id: arr.length + i, value: cv, matched: false, flipped: false}
-      );
-      return pv;
-    },[])
-
-    return this.scramble(arr3);
-  }
-
-  getPlayers() {    
-    return this.state.players.map((v,i) => { return ( {id: i, name: v, matched: 0 })});      
-  }
+  
 
   updateState () {
       var data = {
@@ -47,6 +24,20 @@ export default class Settings extends Component {
       }
 
       this.props.updateState(data)
+  }
+
+  serialize = function(obj) {    
+    Object.keys(obj).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`).join('&');
+  }
+
+  deserialize = function(querystring) {
+    /* window.location.search
+    return str.split("&").reduce(function(prev, curr, i, arr) {
+      var p = curr.split("=");
+      prev[decodeURIComponent(p[0])] = decodeURIComponent(p[1]);
+      return prev;
+    }, {});
+    */
   }
 
   handleChange(event) {
