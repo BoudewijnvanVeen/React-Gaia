@@ -27,16 +27,14 @@ var mapPlayers = function(players) {
 module.exports = {
 
     getSettingsFromQueryString : function(querystring) {
-        if (querystring.length > 0) {
-            return querystring.substr(1).split("&").reduce(function(prev, curr, i, arr) {
-                var p = curr.split("=");               
-                prev[decodeURIComponent(p[0])] = decodeURIComponent(p[1]);
-                return prev;
-            }, {});        
-        } 
+        return JSON.parse(decodeURIComponent(querystring));
     },
 
-    settingToState : function(settings, cards) {       
+    setSettingsToQueryString : function(settings) {
+       window.location.search = encodeURIComponent(JSON.stringify(settings));;
+    },
+
+    makeState : function(settings, cards) {       
         return {
             players: mapPlayers(settings.players),
             cards: getCards(cards, settings.noOfPairs)

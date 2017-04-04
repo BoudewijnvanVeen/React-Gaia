@@ -4,6 +4,6 @@ import App from './App';
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <App params={ window.location.search.substring(1) } />,
   document.getElementById('root')
 );

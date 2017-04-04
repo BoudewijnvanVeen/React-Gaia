@@ -1,44 +1,25 @@
 import React, {Component} from 'react';
+import Helper from './Helpers';
 
 export default class Settings extends Component {
   constructor(props) {
     super(props);    
-    this.updateState = this.updateState.bind(this);  
+    this.updateState = this.submit.bind(this);  
     this.handleSubmit = this.handleSubmit.bind(this);   
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {      
-      noOfCards: 10, 
+      noOfPairs: 10, 
       players: [],
       value: ''
     }; 
-  }
+  }  
 
-  
-
-  updateState () {
-      var data = {
-        'cards': this.getCards(this.state.noOfCards),
-        'players':this.getPlayers(),
-        'playing': true
-      }
-
-      this.props.updateState(data)
-  }
-
-  serialize = function(obj) {    
-    Object.keys(obj).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`).join('&');
-  }
-
-  deserialize = function(querystring) {
-    /* window.location.search
-    return str.split("&").reduce(function(prev, curr, i, arr) {
-      var p = curr.split("=");
-      prev[decodeURIComponent(p[0])] = decodeURIComponent(p[1]);
-      return prev;
-    }, {});
-    */
-  }
+  submit () {   
+    var settings = { noOfPairs: this.state.noOfPairs, players: this.state.players };
+    //Helper.setSettingsToQueryString(settings);
+    this.props.onSubmit(settings)
+  }  
 
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -61,7 +42,7 @@ export default class Settings extends Component {
               <input type="text" value={this.state.value} onChange={this.handleChange} />             
               <input type="submit" value="+" />
             </form>
-            <button onClick={this.updateState}>Play!</button>
+            <button onClick={this.updateState}>Play!</button>            
           </div>
         </div>
       );      

@@ -9,35 +9,36 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);  
-    this.updateState = this.updateState.bind(this);     
+    this.settingsToState = this.settingsToState.bind(this);     
 
     this.state = {     
       cards: [],
       players: [],
       playing: false        
-    }
-
-    var settings = Helper.getSettingsFromQueryString(window.location.search);
-    if (settings) {
-      this.updateState(settings);
-    }; 
+    }    
   }  
+
+  componentDidMount() {
+      var settings = Helper.getSettingsFromQueryString(this.props.params);
+      if (settings) this.settingsToState(settings);
+  }
 
   source() {
      return (["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
   }; 
 
-  updateState(settings) { 
-    var state = Helper.settingToState(settings, this.source);
+  settingsToState(settings) { 
+    var state = Helper.makeState(settings, this.source());
     this.setState(state);
     this.setState({playing: true});
   }  
 
-  render() {
+  render() {    
+      console.log(this.props.params);   
       return (    
-          <div id="App">
-            <Settings visible={!this.state.playing} updateState={this.updateState} source={this.source()} />  
-            <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" /> 
+          <div id="App">             
+              <Settings visible={!this.state.playing} onSubmit={this.settingsToState} />                
+              <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" />               
           </div>  
       );
   }
