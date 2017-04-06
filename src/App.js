@@ -19,8 +19,10 @@ class App extends Component {
   }  
 
   componentDidMount() {
-      var settings = Helper.getSettingsFromQueryString(this.props.params);
-      if (settings) this.settingsToState(settings);
+      if (this.props.params.length > 0) {
+        var settings = Helper.getSettingsFromQueryString(this.props.params);
+        if (settings) this.settingsToState(settings);
+      }
   }
 
   source() {

@@ -18,11 +18,7 @@ var getCards = function(cards, n) {
     },[])
 
     return scramble(arr3);
-}    
-
-var mapPlayers = function(players) {       
-    return players.map((v,i) => { return ( {id: i, name: v, matched: 0 })});
-};  
+}     
 
 module.exports = {
 
@@ -36,7 +32,7 @@ module.exports = {
 
     makeState : function(settings, cards) {       
         return {
-            players: mapPlayers(settings.players),
+            players: settings.players.map((v,i) => { return ( {id: i, name: v, matched: 0 })}),
             cards: getCards(cards, settings.noOfPairs)
         };
     }
