@@ -27,7 +27,7 @@ module.exports = {
     },
 
     setSettingsToQueryString : function(settings) {
-       window.location.search = encodeURIComponent(JSON.stringify(settings));;
+       return encodeURIComponent(JSON.stringify(settings));;
     },
 
     makeState : function(settings, cards) {       
