@@ -39,7 +39,7 @@ export default class Game extends Component {
 
     if (flippedCards.length === 1) {
       cards.find(byid(card.id)).flipped = true; 
-      if (cards.filter(isFlipped)[0].value === cards.filter(isFlipped)[1].value) {
+      if ((cards.filter(isFlipped)[1]) && (cards.filter(isFlipped)[0].value === cards.filter(isFlipped)[1].value)) {
         cards.filter(isFlipped).forEach(c => c.matched = true);
         players[0].matched += 1;       
     }}

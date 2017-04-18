@@ -1,0 +1,26 @@
+.Settings {
+   margin: auto;
+   width: 500px;
+   padding: 10px;  
+   bottom: 0;
+   color: white;
+}
+
+.Settings>div {
+    float: left;
+}
+
+.Settings .Label {
+    width: 100px;
+}
+
+.Settings .FormRow {
+    text-align: left;
+    Padding: 5px;
+}
+
+.Settings .ListOfPlayers {
+    width: 200px;
+    text-align: left;
+}
+

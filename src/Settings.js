@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Helper from './Helpers';
+import './Settings.css';
 
 export default class Settings extends Component {
   constructor(props) {
@@ -45,16 +46,25 @@ export default class Settings extends Component {
   render() {  
     if (this.props.visible) {
       return (      
-        <div className='Settings'>  
-          { this.state.players.map((v,i) => { return (<div key={i}>{v}</div>); })}
+        <div className='Settings'>            
           <div>
             <form onSubmit={this.handleSubmit}>
-              <input name="noOfPairs" type="text" value={this.state.noOfPairs} onChange={this.handleChange} /> 
-              <input name="currentPlayer" type="text" value={this.state.currentPlayer} onChange={this.handleChange} /> 
-              <button onClick={this.addPlayer}>+</button>                             
-              <input type="submit" value="Submit" />
+              <div className='FormRow'>
+                <span className='Label'>No of Pairs: </span>
+                <input name="noOfPairs" size="4" type="text" len value={this.state.noOfPairs} onChange={this.handleChange} />
+              </div><div className='FormRow'>
+                <span className='Label'>Add Player: </span>                
+                <input name="currentPlayer" type="text" value={this.state.currentPlayer} onChange={this.handleChange} /> 
+                <button onClick={this.addPlayer}>+</button>   
+              </div>                            
+              <input type="submit" value="Play..." /> 
+              <button onClick={this.addBookmark}>Bookmark</button>  
             </form>           
-            <button onClick={this.addBookmark}>Bookmark</button>  
+            
+          </div>
+          <div className='ListOfPlayers'>
+            Players:
+            { this.state.players.map((v,i) => { return (<div key={i}>{v}</div>); })}
           </div>
         </div>
       );      
