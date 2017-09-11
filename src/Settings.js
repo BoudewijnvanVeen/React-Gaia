@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CardsSets from './CardsSets.json';
 import Helper from './Helpers';
 import './Settings.css';
 
@@ -10,7 +11,8 @@ export default class Settings extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.addBookmark = this.addBookmark.bind(this);
 
-    this.state = {      
+    this.state = {  
+      cardsSet: 1,    
       noOfPairs: 10, 
       players: [],
       currentPlayer: ''      
@@ -25,7 +27,7 @@ export default class Settings extends Component {
   }   
 
   handleSubmit () {   
-    var settings = { noOfPairs: this.state.noOfPairs, players: this.state.players };    
+    var settings = { cardsSet: this.state.cardsSet, noOfPairs: this.state.noOfPairs, players: this.state.players };    
     this.props.onSubmit(settings);
     event.preventDefault();
   }  
@@ -49,9 +51,21 @@ export default class Settings extends Component {
         <div className='Settings'>            
           <div>
             <form onSubmit={this.handleSubmit}>
-              <div className='FormRow'>
+            <div className='FormRow'>
+                <span className='Label'>Game: </span>
+                {this.props.cardsSets.map((e, i) =>  
+                  {
+                    return (
+                      <div key={e.key}>
+                        <span>{e.title}</span>
+                        <input type="radio" name="cardsSet" value={i} checked={this.state.cardsSet === i.toString()}  onChange={this.handleChange} />
+                      </div>
+                      )
+                  })
+                }                
+              </div><div className='FormRow'>
                 <span className='Label'>No of Pairs: </span>
-                <input name="noOfPairs" size="4" type="text" len value={this.state.noOfPairs} onChange={this.handleChange} />
+                <input name="noOfPairs" size="4" type="text" value={this.state.noOfPairs} onChange={this.handleChange} />
               </div><div className='FormRow'>
                 <span className='Label'>Add Player: </span>                
                 <input name="currentPlayer" type="text" value={this.state.currentPlayer} onChange={this.handleChange} /> 

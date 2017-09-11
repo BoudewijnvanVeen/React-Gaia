@@ -20,7 +20,7 @@ export default class Card extends Component {
     );
     
     return (      
-      <div className="flip-container" className={classes} ontouchstart={this.handleClick} onClick={this.handleClick}>
+      <div className="flip-container" className={classes} onTouchEnter={this.handleClick} onClick={this.handleClick}>
         <div className="flipper">
           <div className="front">            
           </div>

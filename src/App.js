@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Game from './Game';
+import CardsSets from './CardsSets.json';
 import Settings from './Settings';
 import Helper from './Helpers';
 
@@ -23,23 +24,18 @@ class App extends Component {
         var settings = Helper.getSettingsFromQueryString(this.props.params);
         if (settings) this.settingsToState(settings);
       }
-  }
-
-  source() {
-     return (["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
-  }; 
+  } 
 
   settingsToState(settings) { 
-    var state = Helper.makeState(settings, this.source());
+    var state = Helper.makeState(settings, CardsSets);
     this.setState(state);
     this.setState({playing: true});
   }  
 
-  render() {    
-      console.log(this.props.params);   
+  render() {          
       return (    
           <div id="App">             
-              <Settings visible={!this.state.playing} onSubmit={this.settingsToState} />                
+              <Settings visible={!this.state.playing} onSubmit={this.settingsToState} cardsSets={CardsSets}/>                
               <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" />               
           </div>  
       );

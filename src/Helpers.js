@@ -7,8 +7,9 @@ var scramble = function(array) {
     },[]); 
 };
 
-var getCards = function(cards, n) {       
-    var arr1 = scramble(cards).slice(0, n);;
+var getCards = function(cardsSets, n, i) {      
+    var cards =  cardsSets[i].source;
+    var arr1 = scramble(cards).slice(0, n);
     var arr3 = arr1.reduce((pv,cv,i,arr) => {
         pv.push(
             {id: i, value: cv, matched: false, flipped: false},
@@ -30,10 +31,10 @@ module.exports = {
        return encodeURIComponent(JSON.stringify(settings));;
     },
 
-    makeState : function(settings, cards) {       
+    makeState : function(settings, cardsSets) {       
         return {
-            players: settings.players.map((v,i) => { return ( {id: i, name: v, matched: 0 })}),
-            cards: getCards(cards, settings.noOfPairs)
+            players: settings.players.map((v,i) => { return ( { id: i, name: v, matched: 0 })}),
+            cards: getCards(cardsSets, settings.noOfPairs, settings.cardsSet)
         };
     }
 };
