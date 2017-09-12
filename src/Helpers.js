@@ -7,13 +7,13 @@ var scramble = function(array) {
     },[]); 
 };
 
-var getCards = function(cardsSets, n, i) {      
-    var cards =  cardsSets[i].source;
+var getCards = function(cardsSets, n, set) {      
+    var cards =  cardsSets[set].source;
     var arr1 = scramble(cards).slice(0, n);
     var arr3 = arr1.reduce((pv,cv,i,arr) => {
         pv.push(
-            {id: i, value: cv, matched: false, flipped: false},
-            {id: arr.length + i, value: cv, matched: false, flipped: false}
+            {id: i, value: cv, type: 'text', matched: false, flipped: false},
+            {id: arr.length + i, value: cv, type: cardsSets[set].type, matched: false, flipped: false}
         );
         return pv;
     },[])
