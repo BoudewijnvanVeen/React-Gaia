@@ -13,6 +13,6 @@
         "key": 2,
         "title": "Woorden met beeld",
         "type": "TextImg",
-        "source": ["Beer","huis"]        
+        "source": ["Beer","Huis","Boom","Auto","Bal","Bloem","Boot","Fiets","Hek","Hond","Koe","Meisje","Poes","Tafel","Vis","Wolk"]        
     }
 ]
