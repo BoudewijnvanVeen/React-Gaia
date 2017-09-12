@@ -19,11 +19,11 @@ export default class Card extends Component {
       {'matched': this.props.card.matched}
     );
 
-    var display = this.props.card.value;
+    var display = <span>{this.props.card.value}</span>;
     if (this.props.card.type === "TextImg")
-      display = <img src={this.props.card.value + ".png"}></img>;
+      display = <img src={"img/" + this.props.card.value + ".png"} height="150" width="150"></img>;
     if (this.props.card.type === "TextAudio")
-      display = <audio controls><source src={this.props.card.value + ".mp3"} type="audio/mpeg" /></audio>;
+      display = <audio id={this.props.card.value + "audio"} src={this.props.card.value + ".mp3"} type="audio/mpeg" />;
 
     return (      
       <div className="flip-container" className={classes} onTouchEnter={this.handleClick} onClick={this.handleClick}>

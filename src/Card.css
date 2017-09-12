@@ -30,12 +30,16 @@
 	left: 0;
 
     border: 5px solid white;
-    border-radius: 5px;    
-
-    padding-top: 20px;
+    border-radius: 5px; 
+    
     font-family: cursive;
     font-size: 50px; 
     text-align: center; 
+}
+
+.back span { 
+    position: relative;
+    top: 20px; 
 }
 
 .front {
