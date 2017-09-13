@@ -12,7 +12,7 @@ export default class Settings extends Component {
     this.addBookmark = this.addBookmark.bind(this);
 
     this.state = {  
-      cardsSet: 1,    
+      cardsSet: "0",    
       noOfPairs: 10, 
       players: [],
       currentPlayer: ''      
@@ -27,8 +27,9 @@ export default class Settings extends Component {
   }   
 
   handleSubmit () {   
-    var settings = { cardsSet: this.state.cardsSet, noOfPairs: this.state.noOfPairs, players: this.state.players };    
-    this.props.onSubmit(settings);
+    var settings = { cardsSet: this.state.cardsSet, noOfPairs: this.state.noOfPairs, players: this.state.players };  
+    if (this.state.players.length > 0)        
+      this.props.onSubmit(settings);
     event.preventDefault();
   }  
 

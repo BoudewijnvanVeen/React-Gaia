@@ -21,7 +21,7 @@ export default class Card extends Component {
 
     var display = <span>{this.props.card.value}</span>;
     if (this.props.card.type === "TextImg")
-      display = <img src={"img/" + this.props.card.value + ".png"} height="150" width="150"></img>;
+      display = <img src={"img/" + this.props.card.value + ".png"}></img>;
     if (this.props.card.type === "TextAudio")
       display = <audio id={this.props.card.value + "audio"} src={this.props.card.value + ".mp3"} type="audio/mpeg" />;
 

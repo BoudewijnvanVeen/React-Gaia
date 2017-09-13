@@ -1,15 +1,13 @@
 
-.flip-container {
-    width: 150px;
-    height: 150px;
+.flip-container {   
     float: left;     
     margin: 5px;
 	perspective: 1000px;
 }
 
 .flip-container, .front, .back {
-    width: 150px;
-    height: 150px;
+    width: 10vw;
+    height: 10vw;
 }
 
 .flip-container.flip .flipper {
@@ -24,22 +22,21 @@
 
 .front, .back {
 	backface-visibility: hidden;  
-
 	position: absolute;
-	top: 0;
-	left: 0;
-
-    border: 5px solid white;
-    border-radius: 5px; 
-    
+    border: 0.5vw solid white;
+    border-radius: 5px;     
     font-family: cursive;
-    font-size: 50px; 
-    text-align: center; 
+    font-size: 5vw;    
 }
 
 .back span { 
-    position: relative;
-    top: 20px; 
+    position: relative;   
+    margin: auto;
+}
+
+.back img {
+    width: 100%;
+    height: auto;
 }
 
 .front {
@@ -51,9 +48,4 @@
 .back {
 	transform: rotateY(180deg);
     background-color: yellow;     
-}
-
-@media (max-device-width: 480px) { 
-    .flip-container, .front, .back { width: 21vw; height: 21vw; }
-    .front, .back { padding-top: 10px; font-size: 25px; }
 }
