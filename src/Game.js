@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Card from './Card';
 import Player from './Player';
-import './Game.css';
+import './css/Game.css';
 
 export default class Game extends Component {
   constructor(props) {

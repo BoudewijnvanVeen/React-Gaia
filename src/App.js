@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Game from './Game';
-import CardsSets from './CardsSets.json';
+import CardsSets from './data/CardsSets.json';
 import Settings from './Settings';
 import Helper from './Helpers';
 
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
   constructor(props) {

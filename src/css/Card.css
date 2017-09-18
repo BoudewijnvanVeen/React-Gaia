@@ -24,14 +24,18 @@
 	backface-visibility: hidden;  
 	position: absolute;
     border: 0.5vw solid white;
-    border-radius: 5px;     
-    font-family: cursive;
-    font-size: 5vw;    
+    border-radius: 5px;  
+    font-family: cursive;  
+    font-size: 5vw;  
+}
+
+.IsWord .back span {
+    font-size: 3vw;
 }
 
 .back span { 
     position: relative;   
-    margin: auto;
+    margin: auto;   
 }
 
 .back img {

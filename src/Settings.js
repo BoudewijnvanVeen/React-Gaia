@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CardsSets from './CardsSets.json';
+import CardsSets from './data/CardsSets.json';
 import Helper from './Helpers';
-import './Settings.css';
+import './css/Settings.css';
 
 export default class Settings extends Component {
   constructor(props) {
