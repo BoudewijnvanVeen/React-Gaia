@@ -1,16 +1,16 @@
 {
   "name": "react-gaia",
   "homepage": "https://BoudewijnvanVeen.github.io/React-Gaia",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "classnames": "^2.1.3"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
-    "react-scripts": "0.9.4"
+    "react-scripts": "1.0.13"
   },
   "scripts": {
     "start": "react-scripts start",

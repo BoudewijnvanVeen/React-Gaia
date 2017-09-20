@@ -1,22 +1,35 @@
 .Settings {
-   margin: auto;
-   width: 500px;
-   padding: 10px;  
-   bottom: 0;
-   color: white;
+   background-color: whitesmoke;    
+   padding: 0;
+   border-radius: 3px;
 }
 
-.Settings .Label {
-    width: 100px;
+.Settings .FormRow {  
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
 }
 
-.Settings .FormRow {
-    text-align: left;
-    Padding: 5px;
+.Settings .FormRow > Label {  
+    padding: .5em 1em .5em 0;
+    flex: 1;
 }
 
-.Settings .ListOfPlayers {
-    width: 200px;
+.Settings .FormRow > Input {  
+    flex: 2;
+}
+
+.Settings .FormRow > input, .form-row > button {
+  padding: .5em;
+}
+
+.Settings .FormRow > button {
+    background: gray;
+    color: white;
+    border: 0;
+}
+
+.Settings .ListOfPlayers {    
     text-align: left;
 }
 
