@@ -23,13 +23,17 @@ var getCards = function(cardsSets, n, set) {
 
 module.exports = {
 
-    getSettingsFromQueryString : function(querystring) {
-        return JSON.parse(decodeURIComponent(querystring));
+    getSettingsFromLocalStorage : function() {
+        return JSON.parse(localStorage.getItem("settings"));
     },
 
-    setSettingsToQueryString : function(settings) {
-       return encodeURIComponent(JSON.stringify(settings));;
+    setSettingsToLocalStorage : function(settings) {
+       return encodeURIComponent(localStorage.setItem("settings",JSON.stringify(settings)));
     },
+
+    removeSettingsFromLocalStorage : function() {
+        return encodeURIComponent(localStorage.removeItem("settings"));
+    },    
 
     makeState : function(settings, cardsSets) {       
         return {

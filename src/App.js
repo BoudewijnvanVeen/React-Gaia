@@ -9,36 +9,50 @@ import './css/App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);  
-    this.settingsToState = this.settingsToState.bind(this);     
+    super(props);
+    this.settingsToState = this.settingsToState.bind(this);
+    this.submitSettings = this.submitSettings.bind(this);
+    this.resetSettings = this.resetSettings.bind(this);
 
-    this.state = {     
+    this.state = {
       cards: [],
       players: [],
-      playing: false        
-    }    
-  }  
+      playing: false
+    }
+  }
 
-  componentDidMount() {
-      if (this.props.params.length > 0) {
-        var settings = Helper.getSettingsFromQueryString(this.props.params);
-        if (settings) this.settingsToState(settings);
-      }
-  } 
+  componentDidMount() {    
+    var settings = Helper.getSettingsFromLocalStorage(this.props.params);
+    if (settings) this.settingsToState(settings);
+  }
 
-  settingsToState(settings) { 
+  submitSettings(settings) {
+    Helper.setSettingsToLocalStorage(settings);
+    this.settingsToState(settings);
+  }
+
+  resetSettings() {
+    Helper.removeSettingsFromLocalStorage();
+    this.setState({ playing: false });
+  }
+
+  settingsToState(settings) {
     var state = Helper.makeState(settings, CardsSets);
     this.setState(state);
-    this.setState({playing: true});
-  }  
+    this.setState({ playing: true });
+  }
 
-  render() {          
-      return (    
-          <div id="App">             
-              <Settings visible={!this.state.playing} onSubmit={this.settingsToState} cardsSets={CardsSets}/>                
-              <Game visible={this.state.playing} players={this.state.players} cards={this.state.cards} className="App" />               
-          </div>  
-      );
+  render() {
+    const isPlaying = this.state.playing;
+    return (
+      <div id="App">
+        { isPlaying ? (
+          <Game players={this.state.players} cards={this.state.cards} onReset={this.resetSettings} className="App" />
+        ) : (
+          <Settings onSubmit={this.submitSettings} cardsSets={CardsSets} />
+        )}
+      </div>
+    );
   }
 }
 
