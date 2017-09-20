@@ -38,20 +38,18 @@ export default class Settings extends Component {
     event.preventDefault();
   }
 
-  render() {
-
+  render() {   
     return (
       <div className='Settings'>
         <div>
           <form onSubmit={this.handleSubmit}>
-            <div className='FormRow Selectlist'>
-              <label className='Label'>Game: </label>
+            <div className='FormRow Selectlist'>              
               { this.props.cardsSets.map((e, i) => {
+                const className = (this.state.cardsSet === i.toString())?"active":"";
                 return (
-                  <div key={e.key}>
-                    <span>{e.title}</span>
-                    <input type="radio" name="cardsSet" value={i} checked={this.state.cardsSet === i.toString()} onChange={this.handleChange} />
-                  </div>
+                  <button key={e.key} name="cardsSet" type="button" value={i} className={className} onClick={this.handleChange}>
+                    {e.title}
+                  </button>                  
                 )
               })}
             </div><div className='FormRow'>
