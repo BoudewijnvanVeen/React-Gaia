@@ -8,7 +8,7 @@ export default class Settings extends Component {
     super(props);
     this.addPlayer = this.addPlayer.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);    
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       cardsSet: "0",
@@ -27,7 +27,7 @@ export default class Settings extends Component {
 
   handleChange(event) {
     const value = event.target.value;
-    const name = event.target.name;
+    const name = event.target.id;
     this.setState({ [name]: value });
   }
 
@@ -38,36 +38,44 @@ export default class Settings extends Component {
     event.preventDefault();
   }
 
-  render() {   
+  render() {
     return (
-      <div className='Settings'>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div className='FormRow Selectlist'>              
-              { this.props.cardsSets.map((e, i) => {
-                const className = (this.state.cardsSet === i.toString())?"active":"";
-                return (
-                  <button key={e.key} name="cardsSet" type="button" value={i} className={className} onClick={this.handleChange}>
-                    {e.title}
-                  </button>                  
-                )
-              })}
-            </div><div className='FormRow'>
-              <label className='Label'>No of Pairs: </label>
-              <input name="noOfPairs" size="4" type="text" value={this.state.noOfPairs} onChange={this.handleChange} />
-            </div><div className='FormRow'>
-              <label className='Label'>Add Player: </label>
-              <input name="currentPlayer" type="text" value={this.state.currentPlayer} onChange={this.handleChange} />
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
+          <ul className="flex-outer">
+            <li>
+              <label for="noOfPairs">Selecteer een spel</label>
+              <div  className="flex-container">
+                {this.props.cardsSets.map((e, i) => {
+                  const className = (this.state.cardsSet === i.toString()) ? "active" : "";
+                  return (
+                    <button key={e.key} id="cardsSet" type="button" value={i} className={className} onClick={this.handleChange} >
+                      {e.title}
+                    </button>
+                  )
+                })}
+              </div>
+            </li>
+            <li>
+              <label for="noOfPairs">Aantal paren</label>
+              <input id="noOfPairs" name="noOfPairs" type="text" value={this.state.noOfPairs} onChange={this.handleChange} />
+            </li>
+            <li>
+              <label for="currentPlayer">Voeg speler toe</label>
+              <input id="currentPlayer" type="text" value={this.state.currentPlayer} onChange={this.handleChange} />
               <button onClick={this.addPlayer}>+</button>
-            </div>
-            <input type="submit" value="Play..." />
-          </form>
-
-        </div>
-        <div className='ListOfPlayers'>
-          Players:
-            {this.state.players.map((v, i) => { return (<div key={i}>{v}</div>); })}
-        </div>
+            </li>
+            <li>
+              <label for="noOfPairs">Spelers</label>
+              <div>
+                {this.state.players.map((v, i) => { return (<div key={i}>{v}</div>); })}
+              </div>
+            </li>
+            <li>
+              <button type="submit">Spelen</button>
+            </li>
+          </ul>
+        </form>
       </div>
     );
   }

@@ -1,63 +1,90 @@
-.Settings {
-   background-color: whitesmoke;    
-   padding: 0;
-   border-radius: 3px;
+
+.container {
+    font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+    background: #3AAFAB;
+    color: #fff;
+    padding: 50px 50px; 
+    
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.Settings .FormRow {  
+.container * {
+    box-sizing: border-box;
+}
+
+.flex-container {
     display: flex;
-    justify-content: flex-end;
-    padding: .5em;
+    flex-Direction: row; 
+    justify-Content: space-between 
 }
 
-.Settings .FormRow > Label {  
-    padding: .5em 1em .5em 0;
-    flex: 1;
+.flex-container .active {    
+    background: #FFFFFF;
+    color: black;
 }
 
-.Settings .FormRow > Input {  
-    flex: 2;
-}
-
-.Settings .FormRow > input, .form-row > button {
-  padding: .5em;
-}
-
-.Settings .FormRow > button {
-    background: gray;
-    color: white;
-    border: 0;
-}
-
-.Settings .ListOfPlayers {    
-    text-align: left;
-}
-
-.Settings .SelectList ul {
+.flex-outer, .flex-inner {
     list-style-type: none;
-    margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
 }
 
-.Settings .SelectList li {
-    float: left;
+.flex-outer {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.Settings .SelectList li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.flex-outer li, .flex-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.Settings .SelectList li a:hover:not(.active) {
-    background-color: #111;
+.flex-inner {
+    padding: 0 8px;
+    justify-content: space-between;  
 }
 
-.Settings .SelectList .active {
-    background-color: #4CAF50;
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
 }
 
+.flex-outer li label {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.flex-outer > li > label {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label + *, .flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li input {
+  padding: 15px;
+  border: none;
+}
+
+.flex-outer li button {    
+    padding: 15px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+  }
+
+.flex-outer li > button {
+    margin-left: auto;  
+}
+
+.flex-inner li {
+  width: 100px;
+}
